@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyObject : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class EnemyObject : MonoBehaviour
     ////////////////////////
     public string enemyName;
     public SO_Enemy enemyDB;
-    public SO_GameEvent onEnemyKillEvent;
+    public UpdateHpBarEvent updateHpBar;
     [HideInInspector]
     #endregion
 
@@ -24,14 +25,6 @@ public class EnemyObject : MonoBehaviour
     private void Awake()
     {
         SetEnemyInfo();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            gameObject.SetActive(false);
-            OnUnitKilled.enemyKilled(gameObject, gameObject);
-        }
     }
     #endregion
 
@@ -49,6 +42,7 @@ public class EnemyObject : MonoBehaviour
     public void ReceiveDamage(float damage, GameObject attacker) //Takes damage and minus HP
     {
         enemyHP -= damage;
+        updateHpBar.Invoke(enemyHP, enemyInfo.maxHP);
         Debug.Log("Current HP: " + enemyHP);
 
         //Checks if dead
@@ -57,4 +51,9 @@ public class EnemyObject : MonoBehaviour
             OnUnitKilled.enemyKilled(gameObject, attacker);
         }
     }
+}
+
+[System.Serializable]
+public class UpdateHpBarEvent : UnityEvent<float,float>
+{ 
 }

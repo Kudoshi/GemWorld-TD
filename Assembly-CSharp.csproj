@@ -64,12 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ChaseTarget.cs" />
+    <Compile Include="Assets\CustomSlider.cs" />
     <Compile Include="Assets\Database\Enemy\Enemy.cs" />
     <Compile Include="Assets\Database\Enemy\EnemyObject.cs" />
     <Compile Include="Assets\Database\Enemy\SO_Enemy.cs" />
     <Compile Include="Assets\Database\TowerData\SO_Tower.cs" />
     <Compile Include="Assets\Database\TowerData\Tower.cs" />
     <Compile Include="Assets\Database\TowerData\TowerObject.cs" />
+    <Compile Include="Assets\FaceCameraChangeX.cs" />
     <Compile Include="Assets\Import\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\OnUnitKilled.cs" />
     <Compile Include="Assets\ProjectileBehaviour.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Assets\Scripts\SO_GameEvent.cs" />
     <Compile Include="Assets\TowerAttackBehaviour.cs" />
     <Compile Include="Assets\TowerRangeBehaviour.cs" />
+    <Compile Include="Assets\UnityEvent_SendTwoFloat.cs" />
     <None Include="Assets\Import\QuickOutline\Resources\Shaders\OutlineMask.shader" />
     <None Include="Assets\Import\QuickOutline\Readme.txt" />
     <None Include="Assets\Import\QuickOutline\Resources\Shaders\OutlineFill.shader" />
@@ -647,6 +650,9 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

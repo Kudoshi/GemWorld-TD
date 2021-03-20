@@ -37,24 +37,7 @@ public class TowerAttackBehaviour : MonoBehaviour
         towerInfo = GetComponent<TowerObject>().towerInfo;
         CalculateAtkTimeGap();
         StartCoroutine(attackEnemy());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (currentTarget)
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if(!shouldAttackEnemy)
-            {
-                shouldAttackEnemy = true;
-            }
-            else if (shouldAttackEnemy)
-            {
-                shouldAttackEnemy = false;
-            }
-        }
-    }
+    }   
     #endregion
     private bool loopAttack = true;
     private IEnumerator attackEnemy()

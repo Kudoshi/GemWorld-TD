@@ -31,18 +31,6 @@ public class TowerRangeBehaviour : MonoBehaviour
         GetRangeValue();
         SetColliderRangeRadius();
     }
-    private void Update()
-    {
-        //Debug function to print enemy list
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            foreach (var enemy in enemies)
-            {
-                Debug.Log(enemy);
-            }
-        }
-
-    }
     private void OnEnable()
     {
         OnUnitKilled.onEnemyKilled += OnEnemyKilled;
