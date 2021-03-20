@@ -6,7 +6,6 @@ using UnityEngine;
 public class Enemy 
 {
     public string enemyName;
-    public float currentHP;
     public float maxHP;
     public float speed;
     public float armor;

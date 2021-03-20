@@ -15,7 +15,7 @@ MonoBehaviour:
   towerDataList:
   - towerName: Chipped Emerald
     tier: 0
-    atkSpeed: 2
-    atkRange: 250
+    atkSpeed: 0.9
+    atkRange: 10
     atkDamage: 2
-    atkProjectileSpeed: 100
+    atkProjectileSpeed: 25
