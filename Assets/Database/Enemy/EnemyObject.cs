@@ -43,7 +43,6 @@ public class EnemyObject : MonoBehaviour
     {
         enemyHP -= damage;
         updateHpBar.Invoke(enemyHP, enemyInfo.maxHP);
-        Debug.Log("Current HP: " + enemyHP);
 
         //Checks if dead
         if (enemyHP <= 0)

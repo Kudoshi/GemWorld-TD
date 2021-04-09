@@ -68,6 +68,9 @@
     <Compile Include="Assets\Database\Enemy\Enemy.cs" />
     <Compile Include="Assets\Database\Enemy\EnemyObject.cs" />
     <Compile Include="Assets\Database\Enemy\SO_Enemy.cs" />
+    <Compile Include="Assets\Database\GameSO\SO_GameDifficulty.cs" />
+    <Compile Include="Assets\Database\GameSO\SO_Resource.cs" />
+    <Compile Include="Assets\Database\GameSO\SO_TrackerGamePhase.cs" />
     <Compile Include="Assets\Database\TowerData\SO_Tower.cs" />
     <Compile Include="Assets\Database\TowerData\Tower.cs" />
     <Compile Include="Assets\Database\TowerData\TowerObject.cs" />
@@ -76,10 +79,12 @@
     <Compile Include="Assets\OnUnitKilled.cs" />
     <Compile Include="Assets\ProjectileBehaviour.cs" />
     <Compile Include="Assets\Scripts\DebugMode.cs" />
+    <Compile Include="Assets\Scripts\Enum\GamePhase.cs" />
     <Compile Include="Assets\Scripts\GameEventListener.cs" />
     <Compile Include="Assets\Scripts\SO_GameEvent.cs" />
     <Compile Include="Assets\TowerAttackBehaviour.cs" />
     <Compile Include="Assets\TowerRangeBehaviour.cs" />
+    <Compile Include="Assets\Tracker_GamePhaseManager.cs" />
     <Compile Include="Assets\UnityEvent_SendTwoFloat.cs" />
     <None Include="Assets\Import\QuickOutline\Resources\Shaders\OutlineMask.shader" />
     <None Include="Assets\Import\QuickOutline\Readme.txt" />
@@ -642,6 +647,9 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
@@ -650,9 +658,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
