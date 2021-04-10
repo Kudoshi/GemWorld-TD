@@ -10,12 +10,12 @@ public class Tracker_GamePhaseManager : MonoBehaviour
     public SO_TrackerGamePhase gamePhaseTracker;
     private void Awake()
     {
-        //ResetGamePhase 
         gamePhaseTracker.ResetGamePhase();
-        Invoke("TriggerNextGamePhase", 5);
+        Invoke("TriggerNextGamePhase", 1.5f);
     }
-    private void TriggerNextGamePhase()
+    public void TriggerNextGamePhase()
     {
         gamePhaseTracker.StartNextPhase();
+
     }
 }

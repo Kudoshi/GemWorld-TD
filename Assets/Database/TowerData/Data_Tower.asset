@@ -19,3 +19,9 @@ MonoBehaviour:
     atkRange: 10
     atkDamage: 2
     atkProjectileSpeed: 25
+  - towerName: Chipped Sapphire
+    tier: 0
+    atkSpeed: 0.8
+    atkRange: 9
+    atkDamage: 2
+    atkProjectileSpeed: 18

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum GamePhase
 {
-    GameLoading,GameLoaded, BuildPhase, SelectGem, FightWave, GameOver
+    GameLoaded, BuildPhase, SelectGem, FightWave, GameOver
 }
