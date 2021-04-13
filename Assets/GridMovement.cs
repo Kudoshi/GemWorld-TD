@@ -12,8 +12,19 @@ public class GridMovement : MonoBehaviour
     public float moveSpacing;
     public float moveThreshold;
     public bool moveAfterSwipeEnd;
+    public GameObject cam;
+    public float camSmoothSpeed = 10f;
 
+    private Vector3 camOffset;
+ 
     private Vector2 startTouchPos;
+    private LayerMask layerMask;
+    private void Start()
+    {
+        camOffset = cam.transform.position - transform.position;
+        layerMask = LayerMask.GetMask("Floor");
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -106,7 +117,27 @@ public class GridMovement : MonoBehaviour
     private void GridMoveGameObject(Vector3 moveValue)
     {
         //Debug.Log("GridMove");
+        Vector3 initialPos = transform.position;
         Vector3 finalPos = customGrid.GetNearestPointOnGrid(moveValue);
         gameObject.transform.position = finalPos;
+    }
+
+    private void LateUpdate()
+    {
+        //Cast ray to floor point 
+        RaycastHit raycastInfo;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out raycastInfo, 100f, layerMask))
+        {
+            //Move camera if camera is not centered
+            if (raycastInfo.point.x != transform.position.x || raycastInfo.point.z != transform.position.z)
+            {
+                Vector3 distancePointObj =  transform.position - raycastInfo.point;
+                Vector3 moveValue = new Vector3(distancePointObj.x, 0, distancePointObj.z);
+                Vector3 newPos = cam.transform.position + moveValue;
+                Vector3 smoothedCamPos = Vector3.Lerp(cam.transform.position, newPos, camSmoothSpeed * Time.deltaTime);
+                cam.transform.position = smoothedCamPos;
+            }
+            
+        }
     }
 }

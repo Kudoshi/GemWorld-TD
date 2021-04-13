@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BuildManager.cs" />
+    <Compile Include="Assets\CameraMovement.cs" />
     <Compile Include="Assets\ChaseTarget.cs" />
     <Compile Include="Assets\CustomGrid.cs" />
     <Compile Include="Assets\CustomSlider.cs" />
@@ -72,9 +73,14 @@
     <Compile Include="Assets\Database\Enemy\SO_Enemy.cs" />
     <Compile Include="Assets\Database\Events\Event_UI.cs" />
     <Compile Include="Assets\Database\GameSO\SO_GameDifficulty.cs" />
+    <Compile Include="Assets\Database\GameSO\SO_GemChance.cs" />
     <Compile Include="Assets\Database\GameSO\SO_Resource.cs" />
+    <Compile Include="Assets\Database\GameSO\SO_TowerRecipe.cs" />
+    <Compile Include="Assets\Database\GameSO\SO_TowerTracker.cs" />
     <Compile Include="Assets\Database\GameSO\SO_TrackerGamePhase.cs" />
+    <Compile Include="Assets\Database\GameSO\TierChance.cs" />
     <Compile Include="Assets\Database\TowerData\SO_Tower.cs" />
+    <Compile Include="Assets\Database\TowerData\SO_TowerPrefab.cs" />
     <Compile Include="Assets\Database\TowerData\Tower.cs" />
     <Compile Include="Assets\Database\TowerData\TowerObject.cs" />
     <Compile Include="Assets\Event_TextListener.cs" />
@@ -86,12 +92,14 @@
     <Compile Include="Assets\MobileInputExtension.cs" />
     <Compile Include="Assets\OnUnitKilled.cs" />
     <Compile Include="Assets\ProjectileBehaviour.cs" />
+    <Compile Include="Assets\RandomTower.cs" />
     <Compile Include="Assets\Scripts\DebugMode.cs" />
     <Compile Include="Assets\Scripts\Enum\GamePhase.cs" />
     <Compile Include="Assets\Scripts\Event_Text.cs" />
     <Compile Include="Assets\Scripts\GameEvent.cs" />
     <Compile Include="Assets\Scripts\GameEventListener.cs" />
     <Compile Include="Assets\Scripts\SO_GameEvent.cs" />
+    <Compile Include="Assets\Scripts\TowerRecipe.cs" />
     <Compile Include="Assets\TowerAttackBehaviour.cs" />
     <Compile Include="Assets\TowerRangeBehaviour.cs" />
     <Compile Include="Assets\Tracker_GamePhaseManager.cs" />
@@ -645,8 +653,17 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProGrids">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
@@ -657,17 +674,29 @@
     <Reference Include="Unity.ProBuilder">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProBuilder.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProGrids.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
@@ -681,11 +710,23 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>D:/Project/GemWorld-TD/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

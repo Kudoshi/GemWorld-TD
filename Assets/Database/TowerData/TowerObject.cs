@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class TowerObject : MonoBehaviour
 {
-    public string towerName;
     public Tower towerInfo;
     public SO_Tower towerDB;
+    private string towerName;
+
     private void Awake()
     {
+        towerName = gameObject.name;
+        towerName = towerName.Replace("(Clone)", "").Trim();
+        Debug.Log(towerName);
         SetTowerInfo();
     }
 

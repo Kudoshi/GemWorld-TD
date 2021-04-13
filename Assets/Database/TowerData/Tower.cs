@@ -12,7 +12,7 @@ public class Tower
     public float atkRange;
     public float atkDamage;
     public float atkProjectileSpeed;
-
+    public bool attackAirOnly = false;
     //Enums
 
     public enum Tier
@@ -24,4 +24,9 @@ public class Tower
         Perfect,
         Great,
     }
+    public enum Type
+    {
+        Amethyst, Aquamarine, Diamond, Emerald, Opal, Ruby, Sapphire, Topaz
+    }
+    
 }

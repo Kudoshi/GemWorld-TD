@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd4a6825f1fef6498e52a5af5257d19, type: 3}
+  m_Name: Data_GemChance
+  m_EditorClassIdentifier: 
+  GemTierChanceList:
+  - gemChanceLevel: 1
+    chippedChance: 100
+    flawedChance: 0
+    normalChance: 0
+    flawlessChance: 0
+    perfectChance: 0
+    greatChance: 0
+  - gemChanceLevel: 2
+    chippedChance: 70
+    flawedChance: 30
+    normalChance: 0
+    flawlessChance: 0
+    perfectChance: 0
+    greatChance: 0
+  - gemChanceLevel: 3
+    chippedChance: 60
+    flawedChance: 30
+    normalChance: 10
+    flawlessChance: 0
+    perfectChance: 0
+    greatChance: 0
+  - gemChanceLevel: 4
+    chippedChance: 50
+    flawedChance: 30
+    normalChance: 20
+    flawlessChance: 0
+    perfectChance: 0
+    greatChance: 0
+  - gemChanceLevel: 5
+    chippedChance: 40
+    flawedChance: 30
+    normalChance: 20
+    flawlessChance: 10
+    perfectChance: 0
+    greatChance: 0
+  - gemChanceLevel: 6
+    chippedChance: 30
+    flawedChance: 30
+    normalChance: 30
+    flawlessChance: 10
+    perfectChance: 0
+    greatChance: 0
+  - gemChanceLevel: 7
+    chippedChance: 20
+    flawedChance: 30
+    normalChance: 30
+    flawlessChance: 20
+    perfectChance: 0
+    greatChance: 0
+  - gemChanceLevel: 8
+    chippedChance: 10
+    flawedChance: 30
+    normalChance: 30
+    flawlessChance: 30
+    perfectChance: 0
+    greatChance: 0
+  - gemChanceLevel: 9
+    chippedChance: 0
+    flawedChance: 30
+    normalChance: 30
+    flawlessChance: 30
+    perfectChance: 10
+    greatChance: 0

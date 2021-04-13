@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc0217b75b46314a87745aad46a9cfd, type: 3}
+  m_Name: Data_TowerPrefab
+  m_EditorClassIdentifier: 
+  towerPrefabList:
+  - towerName: Chipped Sapphire
+    gameObject: {fileID: 261758121213363038, guid: d764e5b0162e552449434ca0c0ee6b87,
+      type: 3}
+  - towerName: Chipped Emerald
+    gameObject: {fileID: 3524233526031861784, guid: 9fce583ce381ab94fbd8a0f9b6182397,
+      type: 3}
+  - towerName: Chipped Opal
+    gameObject: {fileID: 261758121213363038, guid: 1af97e870ed65d54c8c8b31c5f30e86f,
+      type: 3}
+  - towerName: Chipped Topaz
+    gameObject: {fileID: 261758121213363038, guid: 94319df03f702324dafbcf8d309dc870,
+      type: 3}
+  - towerName: Chipped Amethyst
+    gameObject: {fileID: 261758121213363038, guid: 39f8669c8cb9c914cb53763801bfdf4a,
+      type: 3}
+  - towerName: Chipped Diamond
+    gameObject: {fileID: 261758121213363038, guid: 56974e5dac09ee24d9ba6d994b0e9b6f,
+      type: 3}
+  - towerName: Chipped Aquamarine
+    gameObject: {fileID: 3524233526031861784, guid: 9fce583ce381ab94fbd8a0f9b6182397,
+      type: 3}
+  - towerName: Chipped Ruby
+    gameObject: {fileID: 261758121213363038, guid: cc738f905ae77534593f37b074553462,
+      type: 3}

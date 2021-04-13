@@ -18,7 +18,6 @@ public class BuildManager : MonoBehaviour
     private void Start()
     {
         layerMask = LayerMask.GetMask("Floor");
-        Debug.Log("LayerMask : " + layerMask);
         gridMovement = GetComponent<GridMovement>();
     }
     private void OnEnable()
@@ -63,12 +62,10 @@ public class BuildManager : MonoBehaviour
     }
     private void BuildButtonClick()
     {
-        Debug.Log("event raised");
         //Spawn prefab based on camera front
         RaycastHit raycastInfo;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out raycastInfo, 100f, layerMask))
         {
-            Debug.Log("Raycast Hit : " + raycastInfo.transform.name);
             //Spawn ghost
             //Vector3 spawnPoint = raycastInfo.point;
             Vector3 spawnPoint = new Vector3(raycastInfo.point.x, 1, raycastInfo.point.z);
@@ -80,7 +77,7 @@ public class BuildManager : MonoBehaviour
             ghostGridMovement.moveAfterSwipeEnd = false;
             ghostGridMovement.moveSpacing = gridMovement.moveSpacing;
             ghostGridMovement.moveThreshold = gridMovement.moveThreshold;
-            
+            ghostGridMovement.cam = gridMovement.cam;
         }
 
         //Attach Grid movement to it

@@ -19,9 +19,53 @@ MonoBehaviour:
     atkRange: 10
     atkDamage: 2
     atkProjectileSpeed: 25
+    attackAirOnly: 0
   - towerName: Chipped Sapphire
     tier: 0
     atkSpeed: 0.8
     atkRange: 9
     atkDamage: 2
     atkProjectileSpeed: 18
+    attackAirOnly: 0
+  - towerName: Chipped Amethyst
+    tier: 0
+    atkSpeed: 0.8
+    atkRange: 9
+    atkDamage: 2
+    atkProjectileSpeed: 18
+    attackAirOnly: 1
+  - towerName: Chipped Ruby
+    tier: 0
+    atkSpeed: 0.8
+    atkRange: 9
+    atkDamage: 2
+    atkProjectileSpeed: 18
+    attackAirOnly: 0
+  - towerName: Chipped Opal
+    tier: 0
+    atkSpeed: 0.8
+    atkRange: 9
+    atkDamage: 2
+    atkProjectileSpeed: 18
+    attackAirOnly: 0
+  - towerName: Chipped Diamond
+    tier: 0
+    atkSpeed: 0.8
+    atkRange: 9
+    atkDamage: 2
+    atkProjectileSpeed: 18
+    attackAirOnly: 0
+  - towerName: Chipped Topaz
+    tier: 0
+    atkSpeed: 0.8
+    atkRange: 9
+    atkDamage: 2
+    atkProjectileSpeed: 18
+    attackAirOnly: 0
+  - towerName: Chipped Aquamarine
+    tier: 0
+    atkSpeed: 0.8
+    atkRange: 9
+    atkDamage: 2
+    atkProjectileSpeed: 18
+    attackAirOnly: 0
