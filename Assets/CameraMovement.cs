@@ -8,13 +8,15 @@ public class CameraMovement : MonoBehaviour
     public Camera Camera;
     public bool Rotate;
     protected Plane Plane;
+    public float moveThreshold;
     public float DecreaseCameraPanSpeed = 1;
     public float CameraUpperHeightBound; //Zoom out
     public float CameraLowerHeightBound; //Zoom in
 
     private bool canMoveCam = true;
+    private bool moveCamThresholdOver = false;
     private Vector3 cameraStartPosition;
-    
+    private Vector2 finger1StartTouchPos;
     private void Awake()
     {
         if (Camera == null)
@@ -59,8 +61,26 @@ public class CameraMovement : MonoBehaviour
         {
             //Get distance camera should travel
             Delta1 = PlanePositionDelta(Input.GetTouch(0)) / DecreaseCameraPanSpeed;
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+                finger1StartTouchPos = Input.GetTouch(0).position;
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
-                Camera.transform.Translate(Delta1, Space.World);
+            {
+                if (moveCamThresholdOver == false)
+                {
+                    Vector2 finger1EndTouchPos = Input.GetTouch(0).position;
+                    float distanceBetween = Vector2.Distance(finger1EndTouchPos, finger1StartTouchPos);
+                    Debug.Log(distanceBetween);
+                    if (distanceBetween >= moveThreshold)
+                        moveCamThresholdOver = true;
+                }
+                else if (moveCamThresholdOver == true)
+                {
+                    Camera.transform.Translate(Delta1, Space.World);
+                
+                }
+            }
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                moveCamThresholdOver = false;
         }
 
         //Pinch (Zoom Function)

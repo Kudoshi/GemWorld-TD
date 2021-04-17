@@ -6,4 +6,5 @@ using UnityEngine;
 public class SO_TowerRecipe : ScriptableObject
 {
    public TowerRecipe[] towerRecipe;
+
 }

@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 19991444}
   - component: {fileID: 19991445}
   - component: {fileID: 19991446}
+  - component: {fileID: 19991447}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -195,16 +196,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 963194227}
   Rotate: 0
+  moveThreshold: 2.5
   DecreaseCameraPanSpeed: 2.5
   CameraUpperHeightBound: 10
   CameraLowerHeightBound: 10
+--- !u!114 &19991447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19991442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a837586f7dd034180df7a27ce550a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 963194227}
+  tapTimeThreshold: 0.2
+  tapMoveThreshold: 2
+  camOffsetOnTower: {x: 0, y: 17, z: -12.5}
 --- !u!43 &36406288
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27516
+  m_Name: pb_Mesh-1284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -396,7 +414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18, y: -9}
+  m_AnchoredPosition: {x: 18, y: -8.999878}
   m_SizeDelta: {x: -601.3314, y: -644.7831}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87736150
@@ -516,11 +534,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3524233524986812614, guid: 9fce583ce381ab94fbd8a0f9b6182397,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3524233525022134965, guid: 9fce583ce381ab94fbd8a0f9b6182397,
         type: 3}
       propertyPath: m_Mesh
@@ -551,6 +564,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 471406337}
+    - target: {fileID: 3524233525681778415, guid: 9fce583ce381ab94fbd8a0f9b6182397,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3524233526031861784, guid: 9fce583ce381ab94fbd8a0f9b6182397,
         type: 3}
       propertyPath: m_Name
@@ -1572,7 +1590,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27598
+  m_Name: pb_Mesh-1286
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2886,7 +2904,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27558
+  m_Name: pb_Mesh-1298
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3125,108 +3143,10 @@ MonoBehaviour:
     type: 3}
   randomTwrPrefab: {fileID: 768312146819347950, guid: f1246b36725304d46aeaacd598198c01,
     type: 3}
+  cam: {fileID: 963194225}
   resourceSO: {fileID: 11400000, guid: 2a5e25692deea7547a1f059e9da7742f, type: 2}
   gamePhaseSO: {fileID: 11400000, guid: 0528e3d9262a86443a968a3f5493f5d9, type: 2}
-  cam: {fileID: 963194225}
   gridMovement: {fileID: 1503827657}
---- !u!1 &1515356985
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1515356989}
-  - component: {fileID: 1515356988}
-  - component: {fileID: 1515356987}
-  - component: {fileID: 1515356986}
-  m_Layer: 5
-  m_Name: Canvas - TowerSkill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1515356986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515356985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &1515356987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515356985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
---- !u!223 &1515356988
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515356985}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 963194227}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!224 &1515356989
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515356985}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 464.5, y: 261.25}
-  m_SizeDelta: {x: 929, y: 522.5}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1517919233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,7 +3229,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27464
+  m_Name: pb_Mesh19280
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3484,7 +3404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1884148990
 RectTransform:
   m_ObjectHideFlags: 0

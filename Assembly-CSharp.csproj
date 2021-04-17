@@ -47,6 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>4.9.1.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2019.4.12f1</UnityVersion>
@@ -88,6 +89,7 @@
     <Compile Include="Assets\FaceCameraChangeX.cs" />
     <Compile Include="Assets\GridMovement.cs" />
     <Compile Include="Assets\Import\QuickOutline\Scripts\Outline.cs" />
+    <Compile Include="Assets\LeftStatsPanel.cs" />
     <Compile Include="Assets\Listener_UIButtonEvent.cs" />
     <Compile Include="Assets\MobileInputExtension.cs" />
     <Compile Include="Assets\OnUnitKilled.cs" />
@@ -105,6 +107,8 @@
     <Compile Include="Assets\Tracker_GamePhaseManager.cs" />
     <Compile Include="Assets\Tracker_Resource.cs" />
     <Compile Include="Assets\Trigger_UIButtonEvent.cs" />
+    <Compile Include="Assets\UIController.cs" />
+    <Compile Include="Assets\UITowerSelect.cs" />
     <Compile Include="Assets\UI_UpdateGem.cs" />
     <Compile Include="Assets\UnityEvent_SendTwoFloat.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

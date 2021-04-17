@@ -4709,7 +4709,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4769,7 +4769,7 @@ GameObject:
   - component: {fileID: 3524233525022134970}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5112,7 +5112,7 @@ GameObject:
   - component: {fileID: 3524233525353939654}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7000,7 +7000,7 @@ GameObject:
   - component: {fileID: 3524233525745951889}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7091,7 +7091,7 @@ GameObject:
   - component: {fileID: 3524233525815110764}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7129,7 +7129,7 @@ GameObject:
   - component: {fileID: 3524233526031861780}
   m_Layer: 0
   m_Name: Chipped Emerald
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7164,7 +7164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d37c4c37637cd04cac11b97b7f4763b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerName: Chipped Emerald
   towerInfo:
     towerName: 
     tier: 0
@@ -7172,6 +7171,7 @@ MonoBehaviour:
     atkRange: 0
     atkDamage: 0
     atkProjectileSpeed: 0
+    attackAirOnly: 0
   towerDB: {fileID: 11400000, guid: 0c41b3fd32145714e841c3557a2dc21a, type: 2}
 --- !u!114 &3524233526031861781
 MonoBehaviour:
@@ -7242,7 +7242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3524233526510953099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.60000014, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3524233526031861787}
@@ -12035,7 +12035,7 @@ GameObject:
   - component: {fileID: 3524233526713330658}
   m_Layer: 0
   m_Name: Cone
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

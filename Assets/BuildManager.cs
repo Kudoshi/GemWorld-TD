@@ -7,14 +7,14 @@ public class BuildManager : MonoBehaviour
 {
     public GameObject ghostTwrPrefab;
     public GameObject randomTwrPrefab;
+    public GameObject cam;
     public SO_Resource resourceSO;
     public SO_TrackerGamePhase gamePhaseSO;
-    public GameObject cam;
     public GridMovement gridMovement;
 
     private GameObject towerGhost;
-
     private int layerMask;
+
     private void Start()
     {
         layerMask = LayerMask.GetMask("Floor");
@@ -25,9 +25,6 @@ public class BuildManager : MonoBehaviour
         Event_UIButton.onBuildButtonClick += BuildButtonClick;
         Event_UIButton.onOkayBuildButtonClick += OkayBuildButtonClick;
     }
-
-   
-
     private void OnDisable()
     {
         Event_UIButton.onBuildButtonClick -= BuildButtonClick;
@@ -53,9 +50,6 @@ public class BuildManager : MonoBehaviour
             {
                 Destroy(towerGhost);
             }
-            else
-                Debug.LogWarning("ERROR: tower Ghost not found");
-
             gamePhaseSO.StartNextPhase();
         }
         
@@ -64,13 +58,14 @@ public class BuildManager : MonoBehaviour
     {
         //Spawn prefab based on camera front
         RaycastHit raycastInfo;
+
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out raycastInfo, 100f, layerMask))
         {
             //Spawn ghost
-            //Vector3 spawnPoint = raycastInfo.point;
             Vector3 spawnPoint = new Vector3(raycastInfo.point.x, 1, raycastInfo.point.z);
             towerGhost = Instantiate(ghostTwrPrefab, spawnPoint, ghostTwrPrefab.transform.rotation, transform);
-            //Inject value to ghost movement
+
+            //Inject value to GridMovement Script
             GridMovement ghostGridMovement = towerGhost.AddComponent<GridMovement>();
             ghostGridMovement.customGrid = gridMovement.customGrid;
             ghostGridMovement.Move = true;
@@ -79,13 +74,10 @@ public class BuildManager : MonoBehaviour
             ghostGridMovement.moveThreshold = gridMovement.moveThreshold;
             ghostGridMovement.cam = gridMovement.cam;
         }
-
-        //Attach Grid movement to it
     }
     
     private void Update()
     {
         Debug.DrawRay(cam.transform.position, cam.transform.forward * 1000f, Color.red);
-
     }
 }

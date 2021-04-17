@@ -51,18 +51,20 @@ public class RandomTower : MonoBehaviour
     {
         //Get Random Tower Type
         string towerType = GetRandomTower();
+
         Debug.Log(tier + " " + towerType);
+
+        //Get tower prefab
         GameObject towerPrefab = towerPrefabSO.GetGameObjectPrefab(tier.ToString() + " " + towerType);
+
         Instantiate(towerPrefab, transform.position, towerPrefab.transform.rotation);
         Destroy(gameObject);
-        //From SO_TowerPrefab get the gameobject prefab based on the tower name (tier + tower name)
-        //GameObject towerPrefab = 
-        //Instantiate tower prefab based on SO_TowerPrefab
 
     }
     private string GetRandomTower()
     {
-        int randomTowerNumber = UnityEngine.Random.Range(1, System.Enum.GetValues(typeof(Tower.Type)).Length);
+        int randomTowerNumber = UnityEngine.Random.Range(0, (System.Enum.GetValues(typeof(Tower.Type)).Length - 1));
+        Debug.Log(randomTowerNumber);
         Tower.Type towerType = (Tower.Type)randomTowerNumber;
 
         return towerType.ToString();
