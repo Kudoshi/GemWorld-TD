@@ -93,8 +93,10 @@
     <Compile Include="Assets\Listener_UIButtonEvent.cs" />
     <Compile Include="Assets\MobileInputExtension.cs" />
     <Compile Include="Assets\OnUnitKilled.cs" />
+    <Compile Include="Assets\PressableUI.cs" />
     <Compile Include="Assets\ProjectileBehaviour.cs" />
     <Compile Include="Assets\RandomTower.cs" />
+    <Compile Include="Assets\RecipeManager.cs" />
     <Compile Include="Assets\Scripts\DebugMode.cs" />
     <Compile Include="Assets\Scripts\Enum\GamePhase.cs" />
     <Compile Include="Assets\Scripts\Event_Text.cs" />

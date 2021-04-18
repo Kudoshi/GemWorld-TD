@@ -11,6 +11,7 @@ public class BuildManager : MonoBehaviour
     public SO_Resource resourceSO;
     public SO_TrackerGamePhase gamePhaseSO;
     public GridMovement gridMovement;
+    public static event Action onCanStillBuild;
 
     private GameObject towerGhost;
     private int layerMask;
@@ -24,13 +25,31 @@ public class BuildManager : MonoBehaviour
     {
         Event_UIButton.onBuildButtonClick += BuildButtonClick;
         Event_UIButton.onOkayBuildButtonClick += OkayBuildButtonClick;
+        TowerObject.onFinishBuilding += FinishBuilding;
     }
+
     private void OnDisable()
     {
         Event_UIButton.onBuildButtonClick -= BuildButtonClick;
         Event_UIButton.onOkayBuildButtonClick -= OkayBuildButtonClick;
+        TowerObject.onFinishBuilding -= FinishBuilding;
 
     }
+    private void FinishBuilding(string arg1, GameObject arg2)
+    {
+        if (resourceSO.buildGem == 0)
+        {
+            if (towerGhost != null)
+            {
+                Destroy(towerGhost);
+            }
+            gamePhaseSO.StartNextPhase();
+        }
+        else
+            onCanStillBuild?.Invoke();
+    }
+
+
     private void OkayBuildButtonClick()
     {
         bool canBuild = resourceSO.CheckCanBuild();
@@ -40,17 +59,6 @@ public class BuildManager : MonoBehaviour
         {
             Instantiate(randomTwrPrefab, towerGhost.transform.position, randomTwrPrefab.transform.rotation);
             Event_UI.Trigger_UpdateUI();
-        }
-        
-        //Check if gem is empty - Start next phase
-
-        if (resourceSO.buildGem == 0)
-        {
-            if (towerGhost != null)
-            {
-                Destroy(towerGhost);
-            }
-            gamePhaseSO.StartNextPhase();
         }
         
     }

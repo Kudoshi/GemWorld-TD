@@ -20,10 +20,10 @@ public class SO_TrackerGamePhase : ScriptableObject
     {
         gamePhase = GamePhase.GameOver;
         onPhaseGameOver?.Invoke();
-    
     }
     public void StartNextPhase()
     {
+        Debug.Log("Change Phase to:");
         //Switch to next phase and invoke the event
         switch (gamePhase)
         {

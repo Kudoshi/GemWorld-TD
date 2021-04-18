@@ -47,6 +47,8 @@ public class SO_Resource : ScriptableObject
             return false;
         }
     }
-
+    public void CheckIfAllGemAreBuilt()
+    {
+    }
     
 }

@@ -69,7 +69,7 @@ public class CameraMovement : MonoBehaviour
                 {
                     Vector2 finger1EndTouchPos = Input.GetTouch(0).position;
                     float distanceBetween = Vector2.Distance(finger1EndTouchPos, finger1StartTouchPos);
-                    Debug.Log(distanceBetween);
+
                     if (distanceBetween >= moveThreshold)
                         moveCamThresholdOver = true;
                 }
