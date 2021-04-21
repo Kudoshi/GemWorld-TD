@@ -6,7 +6,7 @@ using UnityEngine;
 public class RecipeManager : MonoBehaviour
 {
     public SO_TowerRecipe twrRecipeSO;
-    public Dictionary<GameObject, string> tempTwrBuiltList;
+    public Dictionary<GameObject, string> tempTwrBuiltList; //Stores the 5 tower built
     private void Awake()
     {
         tempTwrBuiltList = new Dictionary<GameObject, string>();
@@ -19,32 +19,31 @@ public class RecipeManager : MonoBehaviour
     {
         TowerObject.onBuildingInitialize += BuildingInitialize;
         SO_TrackerGamePhase.onPhaseBuild += PhaseBuild;
-        SO_TrackerGamePhase.onPhaseSelectGem += PushTempTowerToDB;
+        SO_TrackerGamePhase.onPhaseSelectGem += PhaseSelectGem;
     }
-
-
     private void OnDisable()
     {
         TowerObject.onBuildingInitialize -= BuildingInitialize;
         SO_TrackerGamePhase.onPhaseBuild -= PhaseBuild;
-        SO_TrackerGamePhase.onPhaseSelectGem -= PushTempTowerToDB;
-
-    }
-
-    private void PhaseBuild()
-    {
-        tempTwrBuiltList.Clear();
-        twrRecipeSO.ResetRecipeTracker();
-    }
-    private void PushTempTowerToDB()
-    {
-        twrRecipeSO.UpdateTempRecipeTracker(tempTwrBuiltList);
+        SO_TrackerGamePhase.onPhaseSelectGem -= PhaseSelectGem;
     }
     private void BuildingInitialize(string twrName, GameObject twrGO)
     {
-
+        //Add tower into tower built list
         tempTwrBuiltList.Add(twrGO, twrName);
-
     }
+    private void PhaseBuild()
+    {
+        //Clear built list and SO's list
+        tempTwrBuiltList.Clear();
+        twrRecipeSO.ResetRecipeTracker();
+    }
+    private void PhaseSelectGem()
+    {
+        //Push list to SO for processing
+        twrRecipeSO.UpdateTempRecipeTracker(tempTwrBuiltList);
+        
+    }
+   
 
 }

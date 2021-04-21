@@ -26,15 +26,18 @@ public class LeftStatsPanel : MonoBehaviour
         if (boundTowerObj != null)
             boundTowerObj.onStatChange -= towerStatChange;
     }
-    public void Bind(TowerObject towerObj)
+    public bool Bind(TowerObject towerObj)
     {
         //Break if towerinfo is null or same as bounded 
         if (boundTowerObj == towerObj)
         {
             if (boundTowerObj == null)
+            {
                 leftStatsPanel.gameObject.SetActive(false);
-
-            return;
+                Debug.Log("Set panel to false;");
+                return false;
+            }
+            
         }
 
         //Unsubs from old stats
@@ -52,10 +55,12 @@ public class LeftStatsPanel : MonoBehaviour
             boundTowerObj.onStatChange += towerStatChange;
             leftStatsPanel.gameObject.SetActive(true);
             UpdateTwrSelectionUI();
+            return true;
         }
         else //If its null
         {
             leftStatsPanel.gameObject.SetActive(false);
+            return false;
         }
     }
 

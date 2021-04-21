@@ -67,6 +67,8 @@
     <Compile Include="Assets\BuildManager.cs" />
     <Compile Include="Assets\CameraMovement.cs" />
     <Compile Include="Assets\ChaseTarget.cs" />
+    <Compile Include="Assets\CombineButton.cs" />
+    <Compile Include="Assets\CombineCanvas.cs" />
     <Compile Include="Assets\CustomGrid.cs" />
     <Compile Include="Assets\CustomSlider.cs" />
     <Compile Include="Assets\Database\Enemy\Enemy.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Assets\Database\TowerData\TowerObject.cs" />
     <Compile Include="Assets\Event_TextListener.cs" />
     <Compile Include="Assets\Event_UIButton.cs" />
+    <Compile Include="Assets\ExitCanvas.cs" />
     <Compile Include="Assets\FaceCameraChangeX.cs" />
     <Compile Include="Assets\GridMovement.cs" />
     <Compile Include="Assets\Import\QuickOutline\Scripts\Outline.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Assets\ProjectileBehaviour.cs" />
     <Compile Include="Assets\RandomTower.cs" />
     <Compile Include="Assets\RecipeManager.cs" />
+    <Compile Include="Assets\RightButtonPanel.cs" />
     <Compile Include="Assets\Scripts\DebugMode.cs" />
     <Compile Include="Assets\Scripts\Enum\GamePhase.cs" />
     <Compile Include="Assets\Scripts\Event_Text.cs" />

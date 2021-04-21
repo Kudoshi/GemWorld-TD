@@ -7,14 +7,16 @@ using System;
 /// </summary>
 public class TowerObject : MonoBehaviour
 {
-    public Tower towerInfo;
     public SO_Tower towerDB;
+    public string towerName { get; private set; }
+    public Tower towerInfo { get; private set; }
+    public int killCount { get; private set; }
+    [HideInInspector] public bool canDowngrade { get; private set; }
 
     public event Action<TowerObject> onStatChange;
     public static event Action<string, GameObject> onBuildingInitialize;
     public static event Action<string, GameObject> onFinishBuilding;
-    public string towerName;
-    public int killCount;
+    
 
     public List<string> upgradableTowerList;
     public List<string> combinableTowerList;
@@ -22,9 +24,8 @@ public class TowerObject : MonoBehaviour
     private void Awake()
     {
         //Set tower name
-        towerName = gameObject.name;
-        towerName = towerName.Replace("(Clone)", "").Trim();
-        SetTowerInfo();
+
+        SetTowerUp();
         
     }
     private void Start()
@@ -47,8 +48,12 @@ public class TowerObject : MonoBehaviour
         onBuildingInitialize?.Invoke(towerName, gameObject);
     }
 
-    private void SetTowerInfo()
+    private void SetTowerUp()
     {
+        //Setup tower name
+        towerName = gameObject.name;
+        towerName = towerName.Replace("(Clone)", "").Trim();
+
         //Copy towerInfo
         Tower tempTowerInfo = new Tower();
         tempTowerInfo = towerDB.getTowerInfo(towerName);
@@ -58,14 +63,37 @@ public class TowerObject : MonoBehaviour
         {
             Debug.LogError("Tower Named: " + towerName + " not found in tower DB");
         }
+
+        //Check if can downgrade
+        if (towerInfo.tier == Tower.Tier.Chipped)
+        {
+            canDowngrade = false;
+        }
+        else
+        {
+            Debug.Log(towerName + "can downgrade coz it is : " + towerInfo.tier);
+            canDowngrade = true;
+        }
     }
     public void AddTowerList(TowerListType twrListType, string twrOutput)
     {
-        Debug.Log("== Can upgrade tower: " + towerName +" into : " + twrOutput);
         if (twrListType == TowerListType.Combinable)
-            combinableTowerList.Add(twrOutput);
+        {
+            if(!combinableTowerList.Contains(twrOutput))
+            {
+                Debug.Log("== Can COMBINE tower: " + towerName + " into : " + twrOutput);
+                combinableTowerList.Add(twrOutput);
+
+            }
+        }
         else if (twrListType == TowerListType.Upgradable)
-            upgradableTowerList.Add(twrOutput);
+        {
+            if (!upgradableTowerList.Contains(twrOutput))
+            {
+                Debug.Log("== Can upgrade tower: " + towerName + " into : " + twrOutput);
+                upgradableTowerList.Add(twrOutput);
+            }
+        }
     }
     public void ModifyStats(string statName, int amount)
     {

@@ -6,86 +6,124 @@ using System.Linq;
 [CreateAssetMenu(fileName = "Data_TowerRecipe", menuName = "ScriptableObject/Data_TowerRecipe")]
 public class SO_TowerRecipe : ScriptableObject
 {
-   public TowerRecipe[] recipeList;
-   public List<RecipeTracker> recipeTrackerList;
+    public TowerRecipe[] recipeList;
+    public List<RecipeTracker> tempRecipeTrackerList;
 
     public void SetupRecipeTracker() //Resets recipe tracker
     {
-        recipeTrackerList = new List<RecipeTracker>();
+        tempRecipeTrackerList = new List<RecipeTracker>();
         foreach (var recipe in recipeList)
         {
-            Dictionary<string, GameObject> tempTwrReq = new Dictionary<string, GameObject>();
+            Dictionary<string, bool> tempTwrReq = new Dictionary<string, bool>();
             foreach (var twrName in recipe.towersRequired)
             {
-                tempTwrReq.Add(twrName, null);
+                tempTwrReq.Add(twrName, false);
             }
             RecipeTracker tempRecipe = new RecipeTracker(recipe.towerUpgrade, tempTwrReq);
-            recipeTrackerList.Add(tempRecipe);
+            tempRecipeTrackerList.Add(tempRecipe);
         }
     }
     public void ResetRecipeTracker()
     {
-        recipeTrackerList.Clear();
+        tempRecipeTrackerList.Clear();
         SetupRecipeTracker();
     }
+
+    //TEMP RECIPE TRACKER [COMBINATION] - WHEN BUILDING THE 5 TOWERS
+    #region Combination Temporary Recipe Tracker 
     public void UpdateTempRecipeTracker(Dictionary<GameObject, string> tempTower)
     {
-        foreach(var recipe in recipeTrackerList)
+        //UPGRADES
+
+        //Check if there are any duplicates in the string 
+        foreach (var twrBeingChecked in tempTower)
         {
-            foreach(var twrBuilt in tempTower)
+            foreach (var twrBeingMatch in tempTower)
             {
-                //Checks if twr is in recipe
-               foreach (var twrReq in recipe.towerRequired.ToList())
+                if (twrBeingChecked.Value == twrBeingMatch.Value && twrBeingChecked.Key != twrBeingMatch.Key)
+                {
+                    TowerObject twrObj = twrBeingChecked.Key.GetComponent<TowerObject>();
+
+                    //Get next tier tower name
+                    string towerName = twrObj.towerName;
+                    string tierName = towerName.Substring(0, towerName.IndexOf(" "));
+                    Tower.Tier nextTier = Tower.GetNextTier(tierName);
+                    string upgTwrName = towerName.Replace(tierName, nextTier.ToString());
+
+                    //Notify tower on upgraded ver
+                    twrObj.AddTowerList(TowerObject.TowerListType.Upgradable, upgTwrName);
+
+                }
+            }
+        }
+
+        //COMBINATION 
+
+        //Iterate through every recipe and insert tower built into the combination temp recipe tracker
+        foreach (var recipe in tempRecipeTrackerList)
+        {
+            foreach (var twrBuilt in tempTower)
+            {
+                foreach (var twrReq in recipe.towerRequired.ToList())
                 {
                     //twr built name == twrReq name
-                    if (twrBuilt.Value == twrReq.Key && twrReq.Value == null)
-                        InsertRecipeTrackerList(recipe.towerUpgrade, twrBuilt.Value, twrBuilt.Key);
+                    if (twrBuilt.Value == twrReq.Key && twrReq.Value == false)
+                        InsertTempRecipeTrackerList(recipe.towerUpgrade, twrBuilt.Value);
                 }
 
             }
         }
-
-        CheckForTempUpgrade();
+        //Check if there are combine available and notify tower
+        CheckForTempCombine(tempTower);
     }
 
-    private void CheckForTempUpgrade()
+    private void CheckForTempCombine(Dictionary<GameObject, string> tempBuiltList)
     {
-        foreach(var recipe in recipeTrackerList)
+        //Iterate thru every recipe and check whether can be combined. If yes, notify the tower
+        foreach (var recipe in tempRecipeTrackerList)
         {
             //Check If Twr Required is Met
             bool recipeCanCombine = true;
-            foreach(var twrReq in recipe.towerRequired)
+            foreach (var twrReq in recipe.towerRequired)
             {
-                if (twrReq.Value == null)
+                if (twrReq.Value == false)
                     recipeCanCombine = false;
             }
 
-            //Put into dictionary if can upgrade
             if (recipeCanCombine)
             {
-                foreach(var twrReq in recipe.towerRequired)
+                foreach(var towerRequiredName in recipe.towerRequired)
                 {
-                    twrReq.Value.GetComponent<TowerObject>().AddTowerList(TowerObject.TowerListType.Combinable, recipe.towerUpgrade);
+                    foreach(var towerBuilt in tempBuiltList)
+                    {
+                        if (towerRequiredName.Key == towerBuilt.Value)
+                        {
+                            towerBuilt.Key.GetComponent<TowerObject>().AddTowerList(TowerObject.TowerListType.Combinable, recipe.towerUpgrade);
+                        }
+                    }
                 }
             }
-                
+
         }
     }
 
-    private void InsertRecipeTrackerList(string towerUpgrade, string towerBuilt, GameObject value)
+    private void InsertTempRecipeTrackerList(string towerUpgrade, string towerBuilt)
     {
-        foreach(var recipe in recipeTrackerList)
+        //Find the recipe corresponding to the towerUpgrade and set the value
+        foreach (var recipe in tempRecipeTrackerList)
         {
-            if (recipe.towerUpgrade == towerUpgrade && recipe.towerRequired[towerBuilt] == null)
+            if (recipe.towerUpgrade == towerUpgrade && recipe.towerRequired[towerBuilt] == false)
             {
-                recipe.towerRequired[towerBuilt] = value;
+                recipe.towerRequired[towerBuilt] = true;
             }
         }
     }
-
-    public void PrintRecipeTracker()
+    #endregion
+    //Utility
+    #region Utility
+    public void PrintTempRecipeTracker()
     {
-        foreach (var recipe in recipeTrackerList)
+        foreach (var recipe in tempRecipeTrackerList)
         {
             Debug.Log("----------------------------------");
             Debug.Log("=====[ " + recipe.towerUpgrade + " ]=====");
@@ -99,9 +137,10 @@ public class SO_TowerRecipe : ScriptableObject
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PrintRecipeTracker();
+            PrintTempRecipeTracker();
         }
     }
+    #endregion
 }
 [System.Serializable]
 public class TowerRecipe
@@ -112,9 +151,9 @@ public class TowerRecipe
 public class RecipeTracker
 {
     public string towerUpgrade;
-    public Dictionary<string, GameObject> towerRequired;
+    public Dictionary<string, bool> towerRequired;
 
-    public RecipeTracker(string twrOutput, Dictionary<string, GameObject> twrRequired)
+    public RecipeTracker(string twrOutput, Dictionary<string, bool> twrRequired)
     {
         towerUpgrade = twrOutput;
         towerRequired = twrRequired;

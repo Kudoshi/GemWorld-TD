@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 [System.Serializable]
 public class Tower
 {
@@ -15,6 +15,25 @@ public class Tower
     public attackType atkType;
     //Enums
 
+    public static Tier GetNextTier(Tier currentTier)
+    {
+        int nextTierIndex = (int)currentTier + 1;
+        //Check if exceed Tier Index
+        if (nextTierIndex >= (Enum.GetNames(typeof(Tier)).Length - 1))
+            return currentTier;
+
+        return (Tier)nextTierIndex;
+    }
+    public static Tier GetNextTier(string currentTierName)
+    {
+        Tier currentTier = (Tier)Enum.Parse(typeof(Tier), currentTierName);
+        int nextTierIndex = (int)currentTier + 1;
+        //Check if exceed Tier Index
+        if (nextTierIndex >= (Enum.GetNames(typeof(Tier)).Length - 1))
+            return currentTier;
+
+        return (Tier)nextTierIndex;
+    }
     public enum Tier
     {
         Chipped,

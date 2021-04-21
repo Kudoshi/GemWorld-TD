@@ -12,7 +12,7 @@ public class UITowerSelect : MonoBehaviour
     public float tapTimeThreshold; // The shorter it is the shorter the tap
     public float tapMoveThreshold;
     public Vector3 camOffsetOnTower;
-    public static event Action<TowerObject> onSelectedTowerChanged;
+    public static event Action<TowerObject, GameObject> onSelectedTowerChanged;
     public static TowerObject SelectedTower { get; private set; }
 
     private Vector2 startEndTime;
@@ -28,12 +28,12 @@ public class UITowerSelect : MonoBehaviour
     }
     private void RegisterTap()
     {
-        if (Input.touchCount >= 1)
+        if (Input.touchCount == 1)
         {
             var finger1 = Input.GetTouch(0);
             if (finger1.phase == TouchPhase.Began)
             {
-                onSelectedTowerChanged?.Invoke(null);
+                //onSelectedTowerChanged?.Invoke(null);
                 //Register Var
                 startTapPos = finger1.position;
                 startEndTime.x = Time.time;
@@ -68,16 +68,23 @@ public class UITowerSelect : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 1f);
         if (Physics.Raycast(ray, out var hitInfo))
         {
-            
-            if (hitInfo.collider.CompareTag("Tower"))
+            if (hitInfo.collider.CompareTag("Rock"))
+            {
+                
+                onSelectedTowerChanged?.Invoke(null, hitInfo.collider.gameObject);
+            }
+            else if (hitInfo.collider.CompareTag("Tower"))
             {
                 CameraRecenterTower(hitInfo);
                 var tower = hitInfo.collider.GetComponentInParent<TowerObject>();
 
                 SelectedTower = tower;
-                onSelectedTowerChanged?.Invoke(tower);
+                onSelectedTowerChanged?.Invoke(tower, hitInfo.collider.gameObject);
             }
-            
+            else
+            {
+               // onSelectedTowerChanged?.Invoke(null, hitInfo.collider.gameObject);
+            }
         }
     }
 }

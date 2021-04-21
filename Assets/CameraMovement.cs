@@ -57,7 +57,7 @@ public class CameraMovement : MonoBehaviour
         var Delta2 = Vector3.zero;
 
         //Scroll (Pan function)
-        if (Input.touchCount == 1 & canMoveCam)
+        if (Input.touchCount == 1 & canMoveCam & !UIController.uiOpen)
         {
             //Get distance camera should travel
             Delta1 = PlanePositionDelta(Input.GetTouch(0)) / DecreaseCameraPanSpeed;

@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Tower
   - Floor
+  - PressableUI
+  - Rock
   layers:
   - Default
   - TransparentFX

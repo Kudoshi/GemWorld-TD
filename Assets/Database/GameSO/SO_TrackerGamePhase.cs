@@ -6,7 +6,8 @@ using System;
 [CreateAssetMenu(fileName = "Tracker_GamePhase", menuName = "ScriptableObject/Tracker_GamePhase")]
 public class SO_TrackerGamePhase : ScriptableObject
 {
-    public GamePhase gamePhase;
+    public GamePhase gamePhase { get; private set; }
+
 
     public static event Action onPhaseBuild;
     public static event Action onPhaseSelectGem;
