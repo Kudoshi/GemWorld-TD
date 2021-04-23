@@ -84,7 +84,7 @@ public class CameraMovement : MonoBehaviour
         }
 
         //Pinch (Zoom Function)
-        if (Input.touchCount >= 2)
+        if (Input.touchCount >= 2 & canMoveCam & !UIController.uiOpen)
         {
             var pos1 = PlanePosition(Input.GetTouch(0).position);
             var pos2 = PlanePosition(Input.GetTouch(1).position);

@@ -15,14 +15,14 @@ public class TowerAttackBehaviour : MonoBehaviour
 
 
 #pragma warning disable CS0649
+    [Header("Effects and Projectile Prefab")]
     [Tooltip("The charging effect when the attack starts its casting animation")]
     [SerializeField] private ParticleSystem chargeFx;
 
     [Tooltip("The projectile prefab")]
     [SerializeField] private GameObject projectilePf;
 
-    [Tooltip("Transform obj where projectile will spawn from")]
-    [SerializeField] private Transform attackSpawnLocation;
+    private Transform attackSpawnLocation;
 #pragma warning restore CS0649
 
     private List<Transform> targetList;
@@ -34,6 +34,7 @@ public class TowerAttackBehaviour : MonoBehaviour
     #region Built-In Component
     private void Start()
     {
+        attackSpawnLocation = transform.Find("AttackSpawnLocation");
         towerInfo = GetComponent<TowerObject>().towerInfo;
         CalculateAtkTimeGap();
         StartCoroutine(attackEnemy());

@@ -20,6 +20,10 @@ public class SO_Resource : ScriptableObject
         gold = 1;
     }
 
+    public enum Stats
+    {
+        kingdomHealth, buildGem, gemChanceLevel, gold,
+    }
     public void AddGold(int gold)
     {
         this.gold += gold;
@@ -33,22 +37,33 @@ public class SO_Resource : ScriptableObject
         //check if have resource
         if (buildGem > 0)
         {
-            buildGem--;
             return true;
-        }
-        else if (buildGem == 0)
-        {
-            Debug.LogWarning("Should not be able to access this part");
-            return false;
         }
         else
         {
-            Debug.LogWarning("Should not be able to access this part");
             return false;
         }
     }
-    public void CheckIfAllGemAreBuilt()
+    public void ModifyStats(Stats stat, int amount)
     {
+        switch (stat)
+        {
+            case Stats.kingdomHealth:
+                kingdomHealth += amount;
+                break;
+            case Stats.buildGem:
+                buildGem += amount;
+                break;
+            case Stats.gemChanceLevel:
+                gemChanceLevel += amount;
+                break;
+            case Stats.gold:
+                gold += amount;
+                break;
+            default:
+                Debug.LogWarning("Stat : " + stat + " not found in enum");
+                break;
+        }
     }
     
 }

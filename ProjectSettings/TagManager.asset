@@ -9,6 +9,8 @@ TagManager:
   - Floor
   - PressableUI
   - Rock
+  - TravelPoint
+  - IgnoreTag
   layers:
   - Default
   - TransparentFX

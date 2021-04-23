@@ -59,7 +59,7 @@ public class UITowerSelect : MonoBehaviour
 
     private void CameraRecenterTower(RaycastHit hitInfo)
     {
-        cam.transform.position = hitInfo.collider.transform.parent.parent.transform.position + camOffsetOnTower;
+        cam.transform.position = hitInfo.collider.transform.position + camOffsetOnTower;
     }
 
     private void SelectTower()
@@ -70,7 +70,6 @@ public class UITowerSelect : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Rock"))
             {
-                
                 onSelectedTowerChanged?.Invoke(null, hitInfo.collider.gameObject);
             }
             else if (hitInfo.collider.CompareTag("Tower"))

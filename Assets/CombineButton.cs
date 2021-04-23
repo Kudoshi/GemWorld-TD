@@ -10,6 +10,7 @@ public class CombineButton : MonoBehaviour
     private CombineCanvas combineScript;
     public void SetButtonText(CombineCanvas combineScript, string towerName)
     {
+        this.combineScript = combineScript;
         combinableTower = towerName;
         text.text = towerName;
     }

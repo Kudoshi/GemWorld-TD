@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     private void OnEnable()
     {
         UITowerSelect.onSelectedTowerChanged += SelectedTowerChanged;
+        SelectedTowerChanged(null, null);
     }
     private void OnDisable()
     {
@@ -36,7 +37,6 @@ public class UIController : MonoBehaviour
                 combineCanvas.ShowCombination(obj);
                 exitCanvas.UIExitButtonActivate();
                 Debug.Log(uiOpen + " - twrObj " + obj);
-
                 break;
             case GamePhase.FightWave:
                 break;

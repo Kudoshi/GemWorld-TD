@@ -65,6 +65,7 @@ public class RandomTower : MonoBehaviour
 
         Tower.Type towerType = (Tower.Type)randomTowerNumber;
 
-        return towerType.ToString();
+        //  return towerType.ToString();
+        return ((Tower.Type)7).ToString();
     }
 }

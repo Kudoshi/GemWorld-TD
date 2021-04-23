@@ -64,11 +64,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AbleToBuildChecker.cs" />
+    <Compile Include="Assets\AttackRangeIndicator.cs" />
     <Compile Include="Assets\BuildManager.cs" />
     <Compile Include="Assets\CameraMovement.cs" />
     <Compile Include="Assets\ChaseTarget.cs" />
     <Compile Include="Assets\CombineButton.cs" />
     <Compile Include="Assets\CombineCanvas.cs" />
+    <Compile Include="Assets\CubeAbleToBuildChecker.cs" />
     <Compile Include="Assets\CustomGrid.cs" />
     <Compile Include="Assets\CustomSlider.cs" />
     <Compile Include="Assets\Database\Enemy\Enemy.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Assets\Import\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\LeftStatsPanel.cs" />
     <Compile Include="Assets\Listener_UIButtonEvent.cs" />
+    <Compile Include="Assets\MessageManager.cs" />
     <Compile Include="Assets\MobileInputExtension.cs" />
     <Compile Include="Assets\OnUnitKilled.cs" />
     <Compile Include="Assets\PressableUI.cs" />

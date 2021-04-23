@@ -8,16 +8,20 @@ using System;
 public class TowerObject : MonoBehaviour
 {
     public SO_Tower towerDB;
+    
+    //Set-able tower info
     public string towerName { get; private set; }
     public Tower towerInfo { get; private set; }
     public int killCount { get; private set; }
     [HideInInspector] public bool canDowngrade { get; private set; }
 
+    //Tower event
     public event Action<TowerObject> onStatChange;
     public static event Action<string, GameObject> onBuildingInitialize;
     public static event Action<string, GameObject> onFinishBuilding;
     
-
+    //View-only List
+    [Header("View Only [Do not touch]")]
     public List<string> upgradableTowerList;
     public List<string> combinableTowerList;
 

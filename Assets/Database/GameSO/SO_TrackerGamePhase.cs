@@ -24,7 +24,7 @@ public class SO_TrackerGamePhase : ScriptableObject
     }
     public void StartNextPhase()
     {
-        Debug.Log("Change Phase to:");
+        
         //Switch to next phase and invoke the event
         switch (gamePhase)
         {
@@ -45,6 +45,7 @@ public class SO_TrackerGamePhase : ScriptableObject
                 onPhaseBuild?.Invoke();
                 break;
         }
+        Debug.Log("Change Phase to: " + gamePhase);
         Event_Text.Display_MiddleLargeText(gamePhase.ToString());
     }
    

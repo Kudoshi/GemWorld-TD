@@ -11,10 +11,12 @@ public class BuildManager : MonoBehaviour
     public SO_Resource resourceSO;
     public SO_TrackerGamePhase gamePhaseSO;
     public GridMovement gridMovement;
-    public static event Action onCanStillBuild;
+    public CustomGrid grid;
+    public static event Action<bool> onCanStillBuild;
 
     private GameObject towerGhost;
     private int layerMask;
+    private AbleToBuildChecker buildChecker;
 
     private void Start()
     {
@@ -23,21 +25,22 @@ public class BuildManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        Event_UIButton.onBuildButtonClick += BuildButtonClick;
         Event_UIButton.onOkayBuildButtonClick += OkayBuildButtonClick;
         TowerObject.onFinishBuilding += FinishBuilding;
+        SO_TrackerGamePhase.onPhaseBuild += PhaseBuild;
     }
 
+  
     private void OnDisable()
     {
-        Event_UIButton.onBuildButtonClick -= BuildButtonClick;
         Event_UIButton.onOkayBuildButtonClick -= OkayBuildButtonClick;
         TowerObject.onFinishBuilding -= FinishBuilding;
+        SO_TrackerGamePhase.onPhaseBuild += PhaseBuild;
 
     }
     private void FinishBuilding(string arg1, GameObject arg2)
     {
-        if (resourceSO.buildGem == 0)
+        if (!resourceSO.CheckCanBuild() & gamePhaseSO.gamePhase == GamePhase.BuildPhase)
         {
             if (towerGhost != null)
             {
@@ -45,24 +48,29 @@ public class BuildManager : MonoBehaviour
             }
             gamePhaseSO.StartNextPhase();
         }
-        else
-            onCanStillBuild?.Invoke();
     }
 
 
     private void OkayBuildButtonClick()
     {
         bool canBuild = resourceSO.CheckCanBuild();
-
+        bool checkBuildable = buildChecker.GetIfCanBuild();
         //Build
-        if (canBuild)
+        if (canBuild & checkBuildable)
         {
+            resourceSO.ModifyStats(SO_Resource.Stats.buildGem, -1);
             Instantiate(randomTwrPrefab, towerGhost.transform.position, randomTwrPrefab.transform.rotation);
             Event_UI.Trigger_UpdateUI();
+            
         }
+        else if (!checkBuildable)
+        {
+            MessageManager.InvokeDisplayMessage(MessageManager.DisplayLocation.Top_Middle, "Unable to build there", 3.0f);
+        }
+        onCanStillBuild?.Invoke(resourceSO.CheckCanBuild());
         
     }
-    private void BuildButtonClick()
+    private void PhaseBuild()
     {
         //Spawn prefab based on camera front
         RaycastHit raycastInfo;
@@ -71,6 +79,7 @@ public class BuildManager : MonoBehaviour
         {
             //Spawn ghost
             Vector3 spawnPoint = new Vector3(raycastInfo.point.x, 1, raycastInfo.point.z);
+            spawnPoint = grid.GetNearestPointOnGrid(spawnPoint);
             towerGhost = Instantiate(ghostTwrPrefab, spawnPoint, ghostTwrPrefab.transform.rotation, transform);
 
             //Inject value to GridMovement Script
@@ -81,6 +90,9 @@ public class BuildManager : MonoBehaviour
             ghostGridMovement.moveSpacing = gridMovement.moveSpacing;
             ghostGridMovement.moveThreshold = gridMovement.moveThreshold;
             ghostGridMovement.cam = gridMovement.cam;
+
+            //Hook to build checker
+            buildChecker = towerGhost.GetComponent<AbleToBuildChecker>();
         }
     }
     
