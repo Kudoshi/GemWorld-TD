@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ChaseTarget))]
 public class ProjectileBehaviour : MonoBehaviour
 {
     //What this script does:
     //When spawn, projectile stats is set and changes the target of changetargetscript
 
-    //Projectile stats
-    public float projectileSpeed;
-    public float projectileDmg;
+    public EffectModifier_Base effectModifier;
 
-    //Projectile Parts Needed
-    [SerializeField] private Transform target;
+    //Projectile stats
+    private float projectileSpeed;
+    private float projectileDmg;
+    private Transform target;
     private ChaseTarget chaseTargetScript;
     private GameObject attacker;
     private Rigidbody rb;
-
 
     private void Awake()
     {
@@ -49,6 +49,8 @@ public class ProjectileBehaviour : MonoBehaviour
         if (other.transform == target && other.CompareTag("Enemy"))
         {
             other.GetComponent<EnemyObject>().ReceiveDamage(projectileDmg, attacker);
+            if (effectModifier != null)
+                effectModifier.ApplyEffect(target);
             Destroy(gameObject);
         }
     }

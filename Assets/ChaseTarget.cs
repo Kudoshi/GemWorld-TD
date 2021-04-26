@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ChaseTarget : MonoBehaviour
 {
-    public Transform target;
-    public float speed;
+    
+    private Transform target;
+    private float speed;
 
     private Rigidbody rb;
 

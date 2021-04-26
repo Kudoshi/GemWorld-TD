@@ -15,7 +15,7 @@ public class TowerRangeBehaviour : MonoBehaviour
 
     [HideInInspector] public List<Transform> enemies;
     [Header("Tower Attack Behaviour Script")]
-    public TowerAttackBehaviour towerAtkBehaviourScript;
+    public AttackBehaviour_Base towerAtkBehaviourScript;
 
     private CapsuleCollider rangeColl;
     private float rangeValue;
@@ -67,15 +67,15 @@ public class TowerRangeBehaviour : MonoBehaviour
     }
     private void RegisterEnemyInList(Transform enemyTransform)
     {
-        Debug.Log("Enemy registered : " + enemyTransform);
+       // Debug.Log("Enemy registered : " + enemyTransform);
         enemies.Add(enemyTransform);
-        towerAtkBehaviourScript.updateTargetList(enemies);
+        towerAtkBehaviourScript.UpdateTargetList(enemies);
     }
     private void DeregisterEnemyInList(Transform enemyTransform)
     {
-        Debug.Log("Unregister enemy");
+       // Debug.Log("Unregister enemy");
         enemies.Remove(enemyTransform);
-        towerAtkBehaviourScript.updateTargetList(enemies);
+        towerAtkBehaviourScript.UpdateTargetList(enemies);
     }
     private void OnEnemyKilled(GameObject victim, GameObject killer)//Event OnUnitKilled Listener
     {

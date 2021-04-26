@@ -7167,9 +7167,9 @@ GameObject:
   m_Component:
   - component: {fileID: 261758121213363037}
   - component: {fileID: 261758121213363036}
-  - component: {fileID: 261758121213363027}
   - component: {fileID: 594846947535978446}
   - component: {fileID: 5097756423701056632}
+  - component: {fileID: 4026091547425486333}
   m_Layer: 0
   m_Name: Chipped Topaz
   m_TagString: Tower
@@ -7211,21 +7211,6 @@ MonoBehaviour:
   towerDB: {fileID: 11400000, guid: 0c41b3fd32145714e841c3557a2dc21a, type: 2}
   upgradableTowerList: []
   combinableTowerList: []
---- !u!114 &261758121213363027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261758121213363038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e4bae493b41c0348a84738c912df615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chargeFx: {fileID: 261758121882011034}
-  projectilePf: {fileID: 4827095753749935363, guid: 4faa3fd941215874884bf1f7b9fb6168,
-    type: 3}
 --- !u!65 &594846947535978446
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7255,6 +7240,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &4026091547425486333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261758121213363038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb47b2b5b4d8e94a9e5d1c944907895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfAttacks: 3
+  chargeFxTime: 0.2
+  chargeFx: {fileID: 261758121882011034}
+  projectilePf: {fileID: 4827095753749935363, guid: 4faa3fd941215874884bf1f7b9fb6168,
+    type: 3}
+  tempTargetList: []
+  targetingList: []
 --- !u!1 &261758121852854437
 GameObject:
   m_ObjectHideFlags: 0
@@ -12537,7 +12541,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -12641,5 +12645,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  towerAtkBehaviourScript: {fileID: 261758121213363027}
+  towerAtkBehaviourScript: {fileID: 4026091547425486333}
   rangeIndicator: {fileID: 261758120753178024}

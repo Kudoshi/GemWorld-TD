@@ -65,6 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AbleToBuildChecker.cs" />
+    <Compile Include="Assets\AttackBehaviour_Base.cs" />
+    <Compile Include="Assets\AttackBehaviour_Tower.cs" />
     <Compile Include="Assets\AttackRangeIndicator.cs" />
     <Compile Include="Assets\BuildManager.cs" />
     <Compile Include="Assets\CameraMovement.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Assets\Database\TowerData\SO_TowerPrefab.cs" />
     <Compile Include="Assets\Database\TowerData\Tower.cs" />
     <Compile Include="Assets\Database\TowerData\TowerObject.cs" />
+    <Compile Include="Assets\EffectModifier_Base.cs" />
     <Compile Include="Assets\Event_TextListener.cs" />
     <Compile Include="Assets\Event_UIButton.cs" />
     <Compile Include="Assets\ExitCanvas.cs" />
@@ -102,6 +105,7 @@
     <Compile Include="Assets\OnUnitKilled.cs" />
     <Compile Include="Assets\PressableUI.cs" />
     <Compile Include="Assets\ProjectileBehaviour.cs" />
+    <Compile Include="Assets\ProjectileBehaviour_Normal.cs" />
     <Compile Include="Assets\RandomTower.cs" />
     <Compile Include="Assets\RecipeManager.cs" />
     <Compile Include="Assets\RightButtonPanel.cs" />
@@ -112,6 +116,7 @@
     <Compile Include="Assets\Scripts\GameEventListener.cs" />
     <Compile Include="Assets\Scripts\SO_GameEvent.cs" />
     <Compile Include="Assets\Scripts\TowerRecipe.cs" />
+    <Compile Include="Assets\Temp_MoveToPoint.cs" />
     <Compile Include="Assets\TowerAttackBehaviour.cs" />
     <Compile Include="Assets\TowerRangeBehaviour.cs" />
     <Compile Include="Assets\Tracker_GamePhaseManager.cs" />

@@ -58,7 +58,7 @@ MonoBehaviour:
   - towerName: Chipped Topaz
     tier: 0
     atkSpeed: 0.8
-    atkRange: 9
+    atkRange: 15
     atkDamage: 2
     atkProjectileSpeed: 18
     atkType: 0
