@@ -6,6 +6,10 @@ using System;
 
 public class AttackBehaviour_Tower : AttackBehaviour_Base
 {
+
+    /// <summary>
+    /// This is the most recent attack behaviour tower
+    /// </summary>
     public int numberOfAttacks;
     public float chargeFxTime = 0.2f;
 
@@ -33,7 +37,7 @@ public class AttackBehaviour_Tower : AttackBehaviour_Base
         //Class variable Initiation
         attackSpawnLocation = transform.Find("AttackSpawnLocation");
         towerInfo = GetComponent<TowerObject>().towerInfo;
-        Debug.Log(towerInfo);
+        //Debug.Log(towerInfo);
         //Calculate attack Interval
         attackInterval = 1 / towerInfo.atkSpeed;
     }

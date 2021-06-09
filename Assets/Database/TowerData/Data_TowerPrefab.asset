@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefabList:
   - towerName: Chipped Sapphire
-    gameObject: {fileID: 261758121213363038, guid: d764e5b0162e552449434ca0c0ee6b87,
+    gameObject: {fileID: 5873677326662588961, guid: d764e5b0162e552449434ca0c0ee6b87,
       type: 3}
   - towerName: Chipped Emerald
-    gameObject: {fileID: 3524233526031861784, guid: 9fce583ce381ab94fbd8a0f9b6182397,
+    gameObject: {fileID: 4414232629068785852, guid: 9fce583ce381ab94fbd8a0f9b6182397,
       type: 3}
   - towerName: Chipped Opal
-    gameObject: {fileID: 261758121213363038, guid: 1af97e870ed65d54c8c8b31c5f30e86f,
+    gameObject: {fileID: 8237901272018420796, guid: 1af97e870ed65d54c8c8b31c5f30e86f,
       type: 3}
   - towerName: Chipped Topaz
     gameObject: {fileID: 261758121213363038, guid: 94319df03f702324dafbcf8d309dc870,
@@ -29,11 +29,11 @@ MonoBehaviour:
     gameObject: {fileID: 261758121213363038, guid: 39f8669c8cb9c914cb53763801bfdf4a,
       type: 3}
   - towerName: Chipped Diamond
-    gameObject: {fileID: 261758121213363038, guid: 56974e5dac09ee24d9ba6d994b0e9b6f,
+    gameObject: {fileID: 8513216726608024656, guid: 56974e5dac09ee24d9ba6d994b0e9b6f,
       type: 3}
   - towerName: Chipped Aquamarine
-    gameObject: {fileID: 3524233526031861784, guid: 9fce583ce381ab94fbd8a0f9b6182397,
+    gameObject: {fileID: 1921141305709420514, guid: a1ca04f3ccd900042b071d59a41af511,
       type: 3}
   - towerName: Chipped Ruby
-    gameObject: {fileID: 261758121213363038, guid: cc738f905ae77534593f37b074553462,
+    gameObject: {fileID: 6935835679989220387, guid: cc738f905ae77534593f37b074553462,
       type: 3}

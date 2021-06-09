@@ -8,13 +8,18 @@ public class CubeAbleToBuildChecker : MonoBehaviour
     public Material noBuildMat;
     public AbleToBuildChecker ableToBuildCheckerManager;
 
-    private bool buildable = true;
-    private GameObject bindedObj = null;
+    public bool buildable = true;
     private Renderer meshRenderer;
+
+    
+
+    [Header("Info")]
     public string collidedWith;
     public bool viewBuildable;
+    public List<GameObject> bindedObj;
     private void Awake()
     {
+        bindedObj = new List<GameObject>();
         meshRenderer = GetComponent<Renderer>();
         meshRenderer.material = noBuildMat;
     }
@@ -24,41 +29,50 @@ public class CubeAbleToBuildChecker : MonoBehaviour
     private void Update()
     {
         viewBuildable = buildable;
-        collidedWith = "Empty";
-        if (bindedObj != null)
-            collidedWith = bindedObj.name.ToString();
 
-        if (buildable)
+        if (bindedObj.Count == 0) //Can build
         {
+            collidedWith = "Nothing";
             meshRenderer.material = canBuildMat;
-            ableToBuildCheckerManager.RegisterBuildable(gameObject,buildable);
+            ableToBuildCheckerManager.RegisterBuildable(gameObject, true);
         }
-        else if (!buildable)
+        else
         {
+            //Console.WriteLine(String.Join(", ", numbersStrLst));//Output:"One, Two, Three, Four, Five"
+
+            collidedWith = string.Join(", ", bindedObj);
             meshRenderer.material = noBuildMat;
-            ableToBuildCheckerManager.RegisterBuildable(gameObject, buildable);
+            ableToBuildCheckerManager.RegisterBuildable(gameObject, false);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Tower") || other.CompareTag("TravelPoint"))
         {
-            if (other.gameObject != bindedObj)
+            if (!bindedObj.Contains(other.gameObject))
             {
-                bindedObj = other.gameObject;
-                buildable = false;
+                bindedObj.Add(other.gameObject);
             }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Tower") || other.CompareTag("TravelPoint"))
+        {
+            //Leave it blank for now
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Tower") || other.CompareTag("TravelPoint"))
         {
-            if (other.gameObject != bindedObj)
+            if (bindedObj.Contains(other.gameObject))
             {
-                bindedObj = null;
-                buildable = true;
+                bindedObj.Remove(other.gameObject);
             }
+            else
+                Debug.Log("Something wrong happened. Detected foreign object that are not registered");
+
         }
     }
 }

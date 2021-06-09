@@ -6811,7 +6811,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -7028,13 +7028,14 @@ GameObject:
   - component: {fileID: 261758120753178030}
   - component: {fileID: 261758120753178031}
   - component: {fileID: 261758120753178029}
+  - component: {fileID: 8185986982328470266}
   m_Layer: 0
   m_Name: AtkRangeIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &261758120753178024
 Transform:
   m_ObjectHideFlags: 0
@@ -7114,6 +7115,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &8185986982328470266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261758120753178025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4972230b306aca24e95e7234be392afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &261758120985684429
 GameObject:
   m_ObjectHideFlags: 0
@@ -7124,7 +7137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 261758120985684428}
   m_Layer: 0
-  m_Name: AttackSpawn
+  m_Name: AttackSpawnLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7154,12 +7167,12 @@ GameObject:
   m_Component:
   - component: {fileID: 261758121213363037}
   - component: {fileID: 261758121213363036}
-  - component: {fileID: 261758121213363027}
-  - component: {fileID: 261758121213363025}
-  - component: {fileID: 261758121213363026}
+  - component: {fileID: 2883703996315838656}
+  - component: {fileID: 6331954151401780718}
+  - component: {fileID: 1492222017279855185}
   m_Layer: 0
   m_Name: Chipped Amethyst
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7179,6 +7192,7 @@ Transform:
   - {fileID: 261758120197689102}
   - {fileID: 261758120985684428}
   - {fileID: 261758120753178024}
+  - {fileID: 559100441225364455}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7194,15 +7208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d37c4c37637cd04cac11b97b7f4763b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerInfo:
-    towerName: 
-    tier: 0
-    atkSpeed: 0
-    atkRange: 0
-    atkDamage: 0
-    atkProjectileSpeed: 0
   towerDB: {fileID: 11400000, guid: 0c41b3fd32145714e841c3557a2dc21a, type: 2}
---- !u!114 &261758121213363027
+  upgradableTowerList: []
+  combinableTowerList: []
+--- !u!114 &2883703996315838656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7211,42 +7220,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 261758121213363038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e4bae493b41c0348a84738c912df615, type: 3}
+  m_Script: {fileID: 11500000, guid: bcb47b2b5b4d8e94a9e5d1c944907895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfAttacks: 1
+  chargeFxTime: 0.2
   chargeFx: {fileID: 261758121882011034}
   projectilePf: {fileID: 4827095753749935363, guid: 4faa3fd941215874884bf1f7b9fb6168,
     type: 3}
-  attackSpawnLocation: {fileID: 261758120985684428}
---- !u!114 &261758121213363025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261758121213363038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ded8fbb5704da4da174c178559c2b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies: []
-  towerAtkBehaviourScript: {fileID: 261758121213363027}
-  rangeIndicator: {fileID: 261758120753178024}
---- !u!136 &261758121213363026
-CapsuleCollider:
+  tempTargetList: []
+  targetingList: []
+--- !u!65 &6331954151401780718
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261758121213363038}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 15
-  m_Height: 0
-  m_Direction: 1
-  m_Center: {x: 0, y: -2, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.95, y: 3.95, z: 1.95}
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!54 &1492222017279855185
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261758121213363038}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &261758121852854437
 GameObject:
   m_ObjectHideFlags: 0
@@ -12529,7 +12541,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -12574,3 +12586,64 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &8776031593400365380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559100441225364455}
+  - component: {fileID: 5109799664769778117}
+  - component: {fileID: 1130431505101176662}
+  m_Layer: 0
+  m_Name: AtkRangeCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &559100441225364455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776031593400365380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261758121213363037}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5109799664769778117
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776031593400365380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 15
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: -2, z: 0}
+--- !u!114 &1130431505101176662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776031593400365380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ded8fbb5704da4da174c178559c2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  towerAtkBehaviourScript: {fileID: 2883703996315838656}
+  rangeIndicator: {fileID: 261758120753178024}

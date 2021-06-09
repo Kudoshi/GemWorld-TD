@@ -65,7 +65,7 @@ public class BuildManager : MonoBehaviour
         }
         else if (!checkBuildable)
         {
-            MessageManager.InvokeDisplayMessage(MessageManager.DisplayLocation.Top_Middle, "Unable to build there", 3.0f);
+            MessageManager.InvokeDisplayMessage(MessageManager.DisplayLocation.Top_Middle, "Unable to build there", 1.5f);
         }
         onCanStillBuild?.Invoke(resourceSO.CheckCanBuild());
         

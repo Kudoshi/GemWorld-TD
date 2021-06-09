@@ -54,8 +54,9 @@ public class RandomTower : MonoBehaviour
 
         //Get tower prefab
         GameObject towerPrefab = towerPrefabSO.GetGameObjectPrefab(tier.ToString() + " " + towerType);
-
+        Debug.Log(towerPrefab);
         Instantiate(towerPrefab, transform.position, towerPrefab.transform.rotation);
+        
         Destroy(gameObject);
 
     }
@@ -65,7 +66,6 @@ public class RandomTower : MonoBehaviour
 
         Tower.Type towerType = (Tower.Type)randomTowerNumber;
 
-        //  return towerType.ToString();
-        return ((Tower.Type)7).ToString();
+         return towerType.ToString();
     }
 }
